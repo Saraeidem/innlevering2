@@ -1,27 +1,19 @@
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$defaultHost = "localhost";
-$defaultUser = "root";
-$defaultPass = "root";
-$defaultName = "PRG120";
+/* --- KOBLING TIL SKOLENS DATABASE (DOKPLOY) --- */
+$host = "b-studentsql-1.usn.no";   // fra SelfService
+$user = "saeid8969";               // fra SelfService
+$pass = "DittPassordHer";          // fra SelfService
+$dbname = "saeid8969";             // fra SelfService
+$port = 3306;                      // som regel 3306
 
-
-
-$host = getenv('DB_HOST') ?: $defaultHost;
-$user = getenv('DB_USER') ?: $defaultUser;
-$pass = getenv('DB_PASS') ?: $defaultPass;
-$name = getenv('DB_NAME') ?: $defaultName;
-
-$conn = new mysqli($host, $user, $pass, $name);
-if ($conn->connect_error) {
-    die("Tilkoblingsfeil: " . $conn->connect_error);
-}
+$conn = new mysqli($host, $user, $pass, $dbname, $port);
 $conn->set_charset("utf8mb4");
 
-
-function input($key, $source = 'POST') {
-    $arr = $source === 'GET' ? $_GET : $_POST;
-    return isset($arr[$key]) ? trim($arr[$key]) : null;
+/* valgfri hjelpefunksjon */
+function input($key, $src='POST') {
+  $a = $src === 'GET' ? $_GET : $_POST;
+  return isset($a[$key]) ? trim($a[$key]) : null;
 }
 ?>
