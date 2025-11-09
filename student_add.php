@@ -72,11 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param('ssss', $bn, $fn, $en, $kk);
             $stmt->execute();
             $stmt->close();
+           
 
-            // Succesmelding
-            $msg = "Student «$bn» ble lagt til i klasse «$kk».";
-            // Nullstill feltene i form
-            $bn = $fn = $en = $kk = '';
+            <?php if ($msg): ?>
+  <div class="notice"><?= htmlspecialchars($msg) ?></div>
+<?php endif; ?>
+
 
         } catch (mysqli_sql_exception $e) {
             if (str_contains($e->getMessage(), 'Duplicate')) {
