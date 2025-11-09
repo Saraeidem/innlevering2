@@ -55,8 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chk->execute();
         $chk->store_result();
         if ($chk->num_rows > 0) {
-            $err = "Brukernavnet « $bn git add .
-
+            $err = "Brukernavnet « $bn » er allerede i bruk.";
         }
         $chk->close();
     }
