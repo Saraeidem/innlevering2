@@ -72,12 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->close();
 
             // Succes-melding + nullstill felter
-            $msg = "Student «$bn» ble lagt til i klasse «$kk».";
+            $msg = "Student «$bn» ble lagt til i klasse « $kk».";
             $bn = $fn = $en = $kk = '';
 
         } catch (mysqli_sql_exception $e) {
             if (str_contains($e->getMessage(), 'Duplicate')) {
-                $err = "Brukernavnet «$bn» finnes allerede.";
+                $err = "Brukernavnet « $bn» finnes allerede.";
             } else {
                 $err = "Databasefeil ved lagring: " . $e->getMessage();
             }
