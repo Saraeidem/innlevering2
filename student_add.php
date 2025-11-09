@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chk->execute();
         $chk->store_result();
         if ($chk->num_rows === 0) {
-            $err = "Klassekode «$kk» finnes ikke. Legg den inn under «Legg til klasse».";
+            $err = "Klassekode « $kk » finnes ikke. Legg den inn under «Legg til klasse».";
         }
         $chk->close();
     }
@@ -55,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chk->execute();
         $chk->store_result();
         if ($chk->num_rows > 0) {
-            $err = "Brukernavnet « $bn» er allerede i bruk.";
+            $err = "Brukernavnet « $bn git add .
+
         }
         $chk->close();
     }
@@ -72,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->close();
 
             // Succes-melding + nullstill felter
-            $msg = "Student «$bn» ble lagt til i klasse « $kk».";
+            $msg = "Student « $bn » ble lagt til i klasse « $kk ».";
             $bn = $fn = $en = $kk = '';
 
         } catch (mysqli_sql_exception $e) {
